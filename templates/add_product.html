@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+    href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" />
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.min.css" />
+</head>
+<body>
+    <section id="header">
+        <a href="/"><img src="static/img/logo.png" class="logo" alt=""></a>
+
+        <div>
+            <ul id="navbar">
+
+                <li><a href='/'>Home</a></li>
+                <li><a href='/shop'>Shop</a></li>
+                <li><a href='/about'>About</a></li>
+                <li><a href='/contact'>Contact</a></li>
+                <li><a href='/product_list'>Product List</a></li>
+
+                <li id="lg-bag"><a href='/cart'><i class="far fa-shopping-bag"></i></a></li>
+                <a href="" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+
+        </div>
+    </section>
+
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12 mt-5">
+            <div class="card">
+                  <div class="card-header">
+                      <h3>New Product</h3>
+                  </div>
+                  <div class="card-body">
+
+
+                        <form method="post" action="{{ url_for('submit_new_product') }}" enctype="multipart/form-data">
+                            <input type="hidden" id="product_id" name="product_id" value="123">
+                            <div class="form-group mb-3">
+                            <center>
+                                <img id="thumbnil"
+                                     style="width:10%;
+                                      margin-top:10px; border-radius: 50%"
+                                     src="static/image/no-image.png"
+                                     alt="image"
+                                >
+                            </center>
+                            <label for="name">Image</label>
+                            <input
+                                    type="file"
+                                    accept="image/*"
+                                    class="form-control"
+                                    id="file"
+                                    name="file"
+                                    onchange="showMyImage(this)"
+                            >
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="title">title</label>
+                                <input type="text" class="form-control" id="title" name="title" autocomplete="off">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="price">price</label>
+                                <input type="number" class="form-control" id="price" name="price" autocomplete="off" min="1">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="category">category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="shirt" selected>shirt</option>
+                                    <option value="trouser">trouser</option>
+                                    <option value="dress">dress</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="description">description</label>
+                                <textarea class="form-control" id="description" name="description"
+                                            rows="5">
+
+                                </textarea>
+
+                            </div>
+
+                            <button type="reset" class="btn btn-danger">Cancel</button>
+                            <button type="submit" class="btn btn-primary float-right">Save</button>
+                        </form>
+
+
+                  </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+    <section id="newsletter" class="section-p1 section-m1" >
+        <div class="newstext">
+            <h4>Sign Up For Newletters</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offters.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img src="img/logo.png" class="logo" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562Welllington Road, Street 32, San Fransico</p>
+            <p><strong>Phone:</strong> +012222365/(+91)0123456789</p>
+            <p><strong>Hours:</strong> 10:00-18:00, Mon-Sat</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditons</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sing In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App or Google Play</p>
+            <div class="row">
+                <img src="img/play/app.jpg" alt="" srcset="">
+                <img src="img/play/play.jpg" alt="" srcset="">
+            </div>
+            <p>Secured Payment Gatways</p>
+            <img src="img/play/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>@2021, Tech2etc-HTML CSS Ecommrce Template</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/2.1.0/js/dataTables.min.js"></script>
+
+    <script>
+
+
+
+
+            function showMyImage(fileInput) {
+                var files = fileInput.files;
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var imageType = /image.*/;
+                    if (!file.type.match(imageType)) {
+                        continue;
+                    }
+                    var img=document.getElementById("thumbnil");
+                    img.file = file;
+                    var reader = new FileReader();
+                    reader.onload = (function(aImg) {
+                        return function(e) {
+                            aImg.src = e.target.result;
+                        };
+                    })(img);
+                    reader.readAsDataURL(file);
+                }
+            }
+
+
+        </script>
+</body>
+</html>

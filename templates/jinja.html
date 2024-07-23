@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"/>
+
+
+</head>
+<body>
+
+    <h4>1. variable</h4>
+    <h6>
+        {% set favouriteAnimal = "dog" %}
+        {{ favouriteAnimal }}
+    </h6>
+    <hr>
+
+    <h4>2.Out put</h4>
+    <h6>{{ "Gak Vicheka" }}</h6>
+    <hr>
+
+    <h4>3. Control Statement</h4>
+    <h6>
+        {% if 1 == 11 %}
+          incorrect
+        {% elif 1 != 2 %}
+          correct
+        {% endif %}
+    </h6>
+    <hr>
+
+    <h4>4. for loop</h4>
+    <h6>
+        {% for x in range(5) %}
+            {{ x }}
+        {% endfor %}
+    </h6>
+    <hr>
+
+    <h4>5. String manipulate</h4>
+    <h6>{{ "Gak Vicheka.split('')" }}</h6>
+    <h6>{{ "Gak " | replace(" ","Vicheka") }}</h6>
+    <h6>{{ "Gak" | length }}</h6>
+    <hr>
+
+    <h4>6. Number Conversion</h4>
+    <h6>{{ 0.01 }}</h6> <!-- Print number -->
+    <h6>{{ 10.121233333 | int }}</h6> <!-- Convert float to integer -->
+    <h6>{{ 10.5 | round }}</h6> <!-- Round float to nearest integer -->
+    <h6>{{ 20 | float }}</h6> <!-- Convert integer to float -->
+    <h6>{{ '%0.2f' % 24.12345 }}</h6> <!-- Display two digits after decimal point -->
+    <h6>{{ "${:.2f}".format(14.35) }}</h6> <!-- Format currency -->
+    <hr>
+
+
+    <h4>7. Random</h4>
+    <h6>{{[ "Gak","Vicheka","Gak_Vicheka" ] | random}}</h6>
+    <hr>
+
+    <h4>8. macros function</h4>
+    <h6>
+        {% macro greet(name) %}
+            Hello, {{ name }}!
+        {% endmacro %}
+
+        <h6>{{ greet("V") }}</h6>
+        <h6>{{ greet("K") }}</h6>
+    </h6>
+    <hr>
+
+    <h4> 9. Using Dictionary </h4>
+    {# initialise the dictionary #}
+    {% set customer = {"Name": "Peter", "age": 30} %}
+    {# Output the value stored by the key Name #}
+    <h6>{{ customer["Name"] }}</h6>
+    <h6>{{ customer["age"] }}</h6>
+    <hr>
+
+    <h4>10. Math Operator</h4>
+    <h6>{{ 2-1 }}</h6>
+    <h6>{{ 2*1 }}</h6>
+    <h6>{{ 2/1 }}</h6>
+    <hr>
+
+    <h4>11. using session</h4>
+    <h6>
+
+        {% if username %}
+            <h6>Username: {{ username }}</h6>
+        {% else %}
+            <h6>Username not set</h6>
+        {% endif %}</h6>
+    <hr>
+
+    <h4>12. using cookie</h4>
+    <h6>
+         {# Get cookie value #}
+    {% set name = request.cookies.get('name') %}
+    {% if name %}
+        name: {{ name }}
+    {% else %}
+        name not set
+    {% endif %}
+    </h6>
+    <hr>
+
+    <h4>13. Default Value</h4>
+    <h6>
+        {% set age = age_variable|default(30) %}
+        <h6>Age: {{ age }}</h6>
+    </h6>
+    <hr>
+
+
+    <h4>14. Logical expressions</h4>
+    {% set x = 5 %}
+    {% set y = 10 %}
+
+    <!-- Example of using 'and' operator -->
+    <h6>{% if x > 0 and y < 15 %}
+        Yes
+    {% else %}No{% endif %}</h6>
+
+    <!-- Example of using 'or' operator -->
+    <h6>I
+        {% if x == 5 or y == 5 %}
+            Yes
+        {% else %}No{% endif %}</h6>
+
+    <!-- Example of using 'not' operator -->
+    <h6>
+        {% if x != 10 %}
+            Yes
+        {% else %}No{% endif %}</h6>
+    <hr>
+
+    <h4>15. array</h4>
+    <h6>
+    {# Define an array #}
+        {% set fruits = ["apple", "banana", "orange"] %}
+            {% for fruit in fruits %}
+                {{ fruit }}
+            {% endfor %}
+    </h6>
+    <hr>
+
+    <h4> 16. Filter </h4>
+    <h6>
+        {% filter upper %}
+            This text becomes uppercase
+        {% endfilter %}
+    <hr>
+
+    <h4> 17. using import </h4>
+    <h6>
+        {% from 'test.html' import website_title %}
+
+        <h5>website title:{{ website_title }}</h5>
+    </h6>
+    <hr>
+
+    <h4> 18. Using Include </h4>
+    <h6>
+        {% include 'header.html' %}
+
+        <h2>here is body</h2>
+
+
+    </h6>
+    <hr>
+
+    <h4> 19. Comparison Function </h4>
+        <h6> {{ 5==5 }} </h6>
+        <h6> {{ 5<=6 }}</h6>
+        <h6> {{ 5<6 }}</h6>
+        <h6>{{ 5>=6 }}</h6>
+        <h6>{{ 5>6 }}</h6>
+        <h6>{{ 5!=6 }}</h6>
+    <hr>
+
+    <h4>20. Concatenation</h4>
+    <h6>{{ "Gak" ~ "Vicheka" }}</h6>
+
+    <h4>21. Sort</h4>
+    <h6>{% set number = 1,2,35,6 %}</h6>
+    {{ number | sort }}
+
+    <h4> 22. Extend </h4>
+        <h6>
+            {% extends 'base.html' %}
+
+            {% block content %}
+                <p>Hello from jinja</p>
+            {% endblock %}
+        </h6>
+    <hr>
+
+
+
+
+
+
+</body>
+</html>
